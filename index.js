@@ -66,7 +66,7 @@ bookForm.addEventListener("submit", (e) => {
                 
                 bookInfo.innerHTML = "test"
                 bookInfo.addEventListener("click", function () {
-                    // window.open(info)
+                    window.open(info)
                     console.log(info)
 
                     
