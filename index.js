@@ -29,17 +29,15 @@ bookForm.addEventListener("submit", (e) => {
     if (search.value === "") {
         window.alert("You must enter a book name")
     } else {
-        let thumbnail = ''
-        let info = ''
-        let title = ''
-        let author = ''
-        
-
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${search.value}&key=AIzaSyAv2nQXfBiCiaW2soslEx--PVU6eurlFF8`)
          .then(response => response.json())
          .then(response => {
              for (i=0; i<response.items.length; i++) {
-                
+                let thumbnail = ''
+                let info = ''
+                let title = ''
+                let author = ''
+
                 id = response.items[i].id
                 title = response.items[i].volumeInfo.title
                 author = response.items[i].volumeInfo.authors
@@ -47,11 +45,7 @@ bookForm.addEventListener("submit", (e) => {
                 
                 thumbnail = response.items[i].volumeInfo.imageLinks.thumbnail
 
-                // console.log(thumbnail)
-
-                // remove the previous search from DOM before appending new material:
                 
-
                 const bookCard = document.createElement("div")
                 bookCard.className = "book"
                 const bookThumbnail = document.createElement("img")
@@ -62,14 +56,12 @@ bookForm.addEventListener("submit", (e) => {
                 const bookAuthor = document.createElement("h3")
                 bookAuthor.textContent = `Author(s): ${author}`
                 const bookInfo = document.createElement("BUTTON") //IS a button
-                bookInfo.id = "infoButton"
+                bookInfo.className = "infoButton"
                 
-                bookInfo.innerHTML = "test"
+                bookInfo.innerHTML = "More information"
                 bookInfo.addEventListener("click", function () {
                     window.open(info)
-                    console.log(info)
-
-                    
+                                        
                 }
                 )
                  
