@@ -5,6 +5,8 @@ const bookForm = document.getElementById("form") // controls the form
 const clearBtn = document.getElementById("clearBtn")
 
 clearBtn.addEventListener('click', deleteBookCards)
+const header = document.querySelector('header')
+header.style.background = "black"
 
 
 const search = document.getElementById("search") //controls the text form 
@@ -16,6 +18,32 @@ bookCard.className = "book"
 const bookImg = document.createElement("img")
 const bookTitle = document.createElement("h3")
 const bookAuthor = document.createElement("h4")
+const backgroundButton =document.createElement('button')
+backgroundButton.innerText = "Change Background"
+backgroundButton.id = "changeButton"
+
+const headerBackground = header.style.background
+
+const changeButton = document.getElementById("changeButton")
+
+bookForm.appendChild(backgroundButton)
+
+let isColored = false
+backgroundButton.addEventListener('click', function () {
+    
+    if (isColored) {
+        header.style.background = "black"
+        isColored = false
+    } else {
+        header.style.background = "white"
+        isColored=true
+
+
+       }
+    
+    console.log("test")
+    
+})
 
 
 
@@ -83,4 +111,8 @@ function deleteBookCards () {
     while (bookCards.length >0) {
         bookCards[0].parentNode.removeChild(bookCards[0])
     }
+}
+
+function changeBackground() {
+
 }
